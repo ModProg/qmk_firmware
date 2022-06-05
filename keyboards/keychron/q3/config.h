@@ -51,11 +51,11 @@
 /* turn off effects when suspended */
 #define RGB_DISABLE_WHEN_USB_SUSPENDED
 
-/* We have 2KB EEPROM size on STM32L432 */
-// #define DYNAMIC_KEYMAP_EEPROM_MAX_ADDR 2047
+/* Set USB polling rate as 1 milliseconds */
+#define USB_POLLING_INTERVAL_MS 1
 
-/* Total size of the EEPROM storage in bytes */
-#define TRANSIENT_EEPROM_SIZE 4096
+/* We have 2KB EEPROM size on STM32L432 */
+ #define DYNAMIC_KEYMAP_EEPROM_MAX_ADDR 2047
 
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:
@@ -107,3 +107,7 @@
 #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 // #define RGB_MATRIX_KEYPRESSES
 
+/* Allow VIA to edit lighting */
+#ifdef VIA_ENABLE
+#    define VIA_QMK_RGBLIGHT_ENABLE
+#endif
