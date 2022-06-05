@@ -1,4 +1,4 @@
-/* Copyright 2020 QMK
+/* Copyright 2022 @ Keychron (https://www.keychron.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,5 @@
 
 #pragma once
 
-#define HAL_USE_I2C TRUE
-#ifdef ENCODER_ENABLE
-#define PAL_USE_CALLBACKS TRUE
-#endif
-
-#include_next <halconf.h>
+/* Set dynamic keymap layer counts to 5 */
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
