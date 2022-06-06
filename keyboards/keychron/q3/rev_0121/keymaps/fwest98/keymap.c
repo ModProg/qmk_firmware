@@ -93,8 +93,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [WIN_BASE] = LAYOUT_all(
         KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,    KC_VOLD, KC_MUTE, KC_VOLU, KC_PSCR,  KC_F13, KC_CALC,
-        KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     X(U_9),  X(U_0),  KC_MINS,  KC_EQL,    KC_BSPC,  KC_DEL,   KC_HOME,  KC_PGUP,
-        KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     X(U_LB), X(U_RB),  KC_BSLS,  KC_DEL,   KC_END,   KC_PGDN,
+        KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     X(U_9),   X(U_0),   KC_MINS,  KC_EQL,    KC_BSPC,  KC_DEL,   KC_HOME,  KC_PGUP,
+        KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     X(U_LB),  X(U_RB),   KC_BSLS,  KC_DEL,   KC_END,   KC_PGDN,
         CAPSWRD,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,             KC_ENT,
         KC_LSPO,            KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,             KC_RSPC,            KC_UP,
         KC_LCPO,  KC_LCMD,  KC_LALT,                                KC_SPC,                                 KC_RALT,  OSL(WIN_GREEK), MO(WIN_FN), KC_RCPC,  KC_LEFT,  KC_DOWN,  KC_RGHT),
@@ -189,7 +189,7 @@ bool caps_word_press_user(uint16_t keycode) {
     switch(keycode) {
         // Keycodes that continue Caps Word with shift applied
         case KC_A ... KC_Z:
-        // TODO add Greek symbols here
+        case X(GGAMMA) ... X(OMEGA):
         case KC_MINS:
             add_weak_mods(MOD_BIT(KC_LSFT)); // apply shift to the next key
             return true;
@@ -224,6 +224,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 rgb_sleep = true;
             }
             return true;
+
+        // Custom Caps Word/Lock activation; activate Caps Word normally, or Caps Lock when holding shift
+        case CAPSWRD:
+            if ((get_mods() & MOD_MASK_SHIFT || host_keyboard_led_state().caps_lock) && record->event.pressed) {
+                tap_code(KC_CAPS);
+                return false;
+            } else {
+                return true;
+            }
 
         // MacOS custom keycodes
         case KC_MISSION_CONTROL:

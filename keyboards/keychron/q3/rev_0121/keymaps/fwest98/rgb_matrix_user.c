@@ -57,6 +57,11 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 #ifdef FN_LAYER_TRANSPARENT_KEYS_OFF
             rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_not_greek, RGB_OFF);
 #endif
+#ifdef CAPS_LOCK_INDICATOR_COLOR
+            if (host_keyboard_led_state().caps_lock || is_caps_word_on()) {
+                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_caps_lock_indicator, CAPS_LOCK_INDICATOR_COLOR);
+            }
+#endif
             break;
     }
 }
@@ -72,7 +77,7 @@ void rgb_matrix_set_color_by_keycode(uint8_t led_min, uint8_t led_max, uint8_t l
 
 bool is_caps_lock_indicator(uint16_t keycode) {
 #ifdef CAPS_LOCK_INDICATOR_LIGHT_ALPHAS
-    return (KC_A <= keycode && keycode <= KC_Z) || keycode == KC_CAPS;
+    return (KC_A <= keycode && keycode <= KC_Z) || keycode == KC_CAPS || keycode >= QK_UNICODEMAP_PAIR;
 #else
     return keycode == KC_CAPS;
 #endif
