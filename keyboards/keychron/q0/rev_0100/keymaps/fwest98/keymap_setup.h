@@ -1,4 +1,4 @@
-/* Copyright 2021 @ Keychron (https://www.keychron.com)
+/* Copyright 2021 @ Grayson Carr
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +16,17 @@
 
 #pragma once
 
-/* USB Device descriptor parameter */
-#define PRODUCT_ID 0x0130
-#define DEVICE_VER 0x0102
+// clang-format off
 
-/* RGB Matrix Configuration */
-#define DRIVER_1_LED_TOTAL 21
-#define DRIVER_LED_TOTAL DRIVER_1_LED_TOTAL
+enum layers {
+    BASE_1,
+    FN_1,
+    BASE_2,
+    FN_2,
+    BASE_3,
+    FN_3,
+    BASE_4,
+    FN_4
+};
 
-/* Enable num-lock LED */
-// #define NUM_LOCK_LED_INDEX 4
+// clang-format on

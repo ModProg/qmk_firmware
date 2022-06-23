@@ -1,4 +1,4 @@
-/* Copyright 2021 @ Keychron (https://www.keychron.com)
+/* Copyright 2021 @ Grayson Carr
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +16,13 @@
 
 #pragma once
 
-/* USB Device descriptor parameter */
-#define PRODUCT_ID 0x0130
-#define DEVICE_VER 0x0102
+#undef NUM_LOCK_LED_INDEX // Disable default numlock led behaviour
 
-/* RGB Matrix Configuration */
-#define DRIVER_1_LED_TOTAL 21
-#define DRIVER_LED_TOTAL DRIVER_1_LED_TOTAL
+void rgb_matrix_init_user(void);
 
-/* Enable num-lock LED */
-// #define NUM_LOCK_LED_INDEX 4
+void rgb_matrix_set_color_by_keycode(uint8_t led_min, uint8_t led_max, uint8_t layer, bool (*is_keycode)(uint16_t), uint8_t red, uint8_t green, uint8_t blue);
+bool rgb_color_is_transparent(uint8_t red, uint8_t green, uint8_t blue);
+
+bool is_num_lock_indicator(uint16_t keycode);
+bool is_transparent(uint16_t keycode);
+bool not_transparent(uint16_t keycode);

@@ -1,4 +1,4 @@
-/* Copyright 2021 @ Keychron (https://www.keychron.com)
+/* Copyright 2022 @ Keychron (https://www.keychron.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +16,26 @@
 
 #pragma once
 
-/* USB Device descriptor parameter */
-#define PRODUCT_ID 0x0130
-#define DEVICE_VER 0x0102
+/* Set dynamic keymap layer counts */
+#define DYNAMIC_KEYMAP_LAYER_COUNT 8
+
+// Unicode config
+#define UNICODE_SELECTED_MODES UC_WINC
 
 /* RGB Matrix Configuration */
-#define DRIVER_1_LED_TOTAL 21
-#define DRIVER_LED_TOTAL DRIVER_1_LED_TOTAL
+#ifdef RGB_MATRIX_ENABLE
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED
+#    define RGB_MATRIX_KEYPRESSES
+#    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 
-/* Enable num-lock LED */
-// #define NUM_LOCK_LED_INDEX 4
+#    define NUM_LOCK_ON_COLOR RGB_OFF
+#    define NUM_LOCK_OFF_COLOR RGB_RED
+#    define NUM_LOCK_INDICATOR_LIGHT_NUMS
+
+#    define LAYER_1_COLOR RGB_OFF
+#    define LAYER_2_COLOR RGB_YELLOW
+#    define LAYER_3_COLOR RGB_GREEN
+#    define LAYER_4_COLOR RGB_BLUE
+
+#    define FN_LAYER_TRANSPARENT_KEYS_OFF
+#endif
