@@ -73,10 +73,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTZ_BASE] = LAYOUT_planck_grid(
-    KC_TAB,  DE_Q,    DE_W,    DE_E,    DE_R,    DE_T,    DE_Z,    DE_U,    DE_I,    DE_O,    DE_P,    KC_BSPC,
-    KC_ESC,  DE_A,    DE_S,    DE_D,    DE_F,    DE_G,    DE_H,    DE_J,    DE_K,    DE_L,    DE_QUES, Z_DEU,
-    KC_LSFT, DE_Y,    DE_X,    DE_C,    DE_V,    DE_B,    DE_N,    DE_M,    DE_COMM, DE_DOT,  DE_MINS, KC_ENT ,
-    KC_LCTL, Z_M2   , KC_LGUI, KC_LALT, Z_M1   , KC_SPC,  KC_SPC,  Z_M1_OS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_TAB,  DE_COMM, DE_Q,    DE_W,    DE_E,    DE_R,    DE_T,    DE_Z,    DE_U,    DE_I,    DE_O,    DE_P,    
+    KC_ESC,  DE_DOT , DE_A,    DE_S,    DE_D,    DE_F,    DE_G,    DE_H,    DE_J,    DE_K,    DE_L,    KC_ENT ,
+    KC_LSFT, KC_LCTL, DE_Y,    DE_X,    DE_C,    DE_V,    DE_B,    DE_N,    DE_M,    Z_DEU,   KC_UP  , KC_BSPC,
+    DE_MINS, Z_M2   , KC_LGUI, KC_LALT, Z_M1   , KC_SPC,  KC_SPC,  Z_M1_OS, DE_QUES, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Qwertz -1
